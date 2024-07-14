@@ -9,7 +9,7 @@ img {
 }
 main {
   padding: 10px;
-  max-width: 700px;
+  max-width: 960px;
   margin: 0 auto;
 }
 header {
@@ -29,22 +29,33 @@ header a.logo {
 }
 header nav {
   display: flex;
-  gap: 15px;
+  gap: 24px;
 }
 div.post {
   display: grid;
-  grid-template-columns: 0.9fr 1.1fr;
+  grid-template-columns: 1fr;
   gap: 20px;
   margin-bottom: 30px;
 }
+@media screen and (min-width: 700px) {
+  div.post {
+    grid-template-columns: 0.9fr 1.1fr;
+  }
+}
 div.post div.text h2 {
   margin: 0;
-  font-size: 1.8rem;
+  font-size: 2rem;
 }
+
+div.post div.texts a {
+  text-decoration: none;
+  color: inherit;
+}
+
 div.post p.info {
-  margin: 6px 0;
+  margin: 24px 0;
   color: #888;
-  font-size: 0.7rem;
+  font-size: 1rem;
   font-weight: bold;
   display: flex;
   gap: 10px;
@@ -54,7 +65,7 @@ div.post p.info a.author {
 }
 div.post p.summary {
   margin: 10px 0;
-  line-height: 1.4rem;
+  line-height: 1.8rem;
 }
 form.login,
 form.register {
@@ -83,4 +94,44 @@ button {
 form.login h1,
 form.register h1 {
   text-align: center;
+}
+
+div.post-page div.image {
+  display: flex;
+  overflow: hidden;
+}
+
+div.post-page div.image img {
+  object-fit: cover;
+  object-position: center center;
+}
+
+div.post-page a {
+  color: #333;
+  text-decoration: underline;
+}
+
+div.post-page h1 {
+  text-align: center;
+  margin: 10px 0 10px;
+}
+
+div.post-page time {
+  text-align: center;
+  display: block;
+  margin: 10px 0 0 0;
+  font-size: 1rem;
+  color: #aaa;
+}
+div.post-page div.author {
+  margin: 0 0 10px 0;
+  text-align: center;
+  font-size: 1rem;
+  font-weight: bold;
+  color: #000000;
+  font-style: italic;
+}
+
+div.post-page div.content {
+  line-height: 1.6rem;
 }
