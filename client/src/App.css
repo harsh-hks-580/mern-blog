@@ -1,6 +1,12 @@
 * {
   box-sizing: border-box;
 }
+a {
+  cursor: pointer;
+}
+button {
+  cursor: pointer;
+}
 body {
   color: #222;
 }
@@ -124,7 +130,7 @@ div.post-page time {
   color: #aaa;
 }
 div.post-page div.author {
-  margin: 0 0 10px 0;
+  margin-bottom: 10px;
   text-align: center;
   font-size: 1rem;
   font-weight: bold;
@@ -134,4 +140,24 @@ div.post-page div.author {
 
 div.post-page div.content {
   line-height: 1.6rem;
+}
+
+div.edit-row {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+div.post-page a.edit-btn {
+  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background-color: #333;
+  text-decoration: none;
+  color: #fff;
+  padding: 15px;
+  border-radius: 20px;
+}
+a svg {
+  height: 20px;
 }
