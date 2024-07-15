@@ -135,4 +135,12 @@ app.get("/post/:id", uploadMiddleware.single("file"), async (req, res) => {
   res.json(postDoc);
 });
 
+app.delete("/post/:id", async (req, res) => {
+  const { id } = req.params;
+  const { token } = req.cookies;
+  jwt.verify(token, secret, {}, async (err, info) => {
+    res.json(await Post.findByIdAndDelete(id));
+  });
+});
+
 app.listen(4000);
