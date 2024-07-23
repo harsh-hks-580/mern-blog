@@ -89,9 +89,13 @@ app.post("/post", uploadMiddleware.single("file"), async (req, res) => {
 });
 
 app.get("/post", async (req, res) => {
+  const pageNo = +req.query.pageNo || 1;
+  const pageSize = +req.query.pageSize || 3;
+
   res.json(
     await Post.find()
-      .limit(50)
+      .skip(pageSize * (pageNo - 1))
+      .limit(pageSize)
       .sort({ createdAt: -1 })
       .populate("author", ["username"])
   );
