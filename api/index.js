@@ -11,6 +11,9 @@ const multer = require("multer");
 const uploadMiddleware = multer({ dest: "uploads/" });
 const fs = require("fs");
 const { error } = require("console");
+const dotenv = require("dotenv");
+
+dotenv.config();
 
 const salt = bcrypt.genSaltSync(10);
 const secret = "co3y54b3y49w3yto7c3yb47f";
@@ -20,9 +23,15 @@ app.use(express.json());
 app.use(cookieParser());
 app.use("/uploads", express.static(__dirname + "/uploads"));
 
-mongoose.connect(
-  "mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+2.2.12"
-);
+const mongoURI = process.env.MONGO_URI;
+
+mongoose
+  .connect(mongoURI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
+  .then(() => console.log("MongoDB connected"))
+  .catch((err) => console.error("MongoDB connection error:", err));
 
 app.post("/register", async (req, res) => {
   const { username, password } = req.body;
